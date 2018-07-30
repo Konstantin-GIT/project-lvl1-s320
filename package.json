@@ -2,7 +2,7 @@
   "name": "brain-games-nk",
   "version": "0.2.2",
   "description": "Set of games for brain training",
-  "keywords":"brain-games,brain,games",
+  "keywords":["brain-games","brain","games"],
   "bin": {
     "brain-games": "dist/bin/brain-games.js"
   },
@@ -25,8 +25,13 @@
     "url": "https://github.com/Konstantin-GIT/project-lvl1-s320/issues"
   },
   "homepage": "https://github.com/Konstantin-GIT/project-lvl1-s320#readme",
+
+  "Dependencies": {
+    "readline-sync": "*"
+  },
+
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-clreadline-synci": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-0": "^6.24.1"
