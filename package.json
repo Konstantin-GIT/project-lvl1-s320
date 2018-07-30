@@ -1,0 +1,28 @@
+{
+  "name": "project-lvl1-s320",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "brain-games": "dist/bin/brain-games.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Konstantin-GIT/project-lvl1-s320.git"
+  },
+  "author": "Naumovich Konstantin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Konstantin-GIT/project-lvl1-s320/issues"
+  },
+  "homepage": "https://github.com/Konstantin-GIT/project-lvl1-s320#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1"
+  }
+}
