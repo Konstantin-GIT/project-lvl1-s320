@@ -1,6 +1,6 @@
 {
   "name": "brain-games-nk",
-  "version": "0.2.2",
+  "version": "0.3.2",
   "description": "Set of games for brain training",
   "keywords": [
     "brain-games",
@@ -15,6 +15,7 @@
   ],
   "scripts": {
     "babel-node": "babel-node",
+    "eslint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production babel src --out-dir dist --source-maps inline",
     "prepublishOnly": "npm run build"
@@ -36,6 +37,10 @@
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "babel-preset-stage-0": "^6.24.1"
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-eslint": "^8.2.2",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.10.0"
   }
 }
