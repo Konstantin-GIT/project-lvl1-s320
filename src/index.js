@@ -48,7 +48,6 @@ export const askQuestionBrainCalc = () => {
   const textQuestion = `Question: ${randomNumber1}${valueSign}${randomNumber2}`;
 
   displayMessageScreen(textQuestion);
-  displayMessageScreen(valueQuestion);
   return valueQuestion;
 };
 
