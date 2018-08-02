@@ -1,5 +1,8 @@
 #!/usr/bin/env node
-import enterName from '../';
+import { enterUserName, displayMessageScreen } from '../';
 
-console.log('Welcome to the Brain Games!');
-enterName();
+const contentGreeting = 'Welcome to the Brain Games!';
+
+displayMessageScreen(contentGreeting);
+
+enterUserName();

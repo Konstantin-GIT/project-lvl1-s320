@@ -2,52 +2,97 @@
 
 import readlineSync from 'readline-sync';
 
-export const enterName = () => {
-  console.log('Answer "yes" if number even otherwise answer "no"');
+export const displayMessageScreen = content => console.log(content);
+
+export const enterUserName = () => {
   const valueName = readlineSync.question('May I have your name? ');
   console.log(`Hi,${valueName}!`);
   return valueName;
 };
 
-export const beginProgramBraimEven = () => {
-  const valueName = enterName();
-  evenProgram(valueName,0);
+export const randomNumber = () => Math.round(Math.random() * 10);
+
+export const randomSign = () => {
+  const arrSign = ['+', '-', '*'];
+  const rang = Math.floor(Math.random() * arrSign.length);
+  return arrSign[rang];
 };
 
+export const resultOperation = (randomNumber1, randomNumber2, CurrentSign) => {
+  switch (CurrentSign) {
+    case '+':
+      return randomNumber1 + randomNumber2;
 
-export const askQuestion = () => {
-  const randomNumber = Math.round (Math.random() * 100);
-  console.log(`Question: ${randomNumber}`);
-  return randomNumber;
+    case '-':
+      return randomNumber1 - randomNumber2;
+
+    case '*':
+      return randomNumber1 * randomNumber2;
+
+    default:
+      return displayMessageScreen('Я таких значений не знаю');
+  }
 };
 
-export const getRangeRnd = (maxNumLen) => {
-	return Math.floor(Math.pow(10, Math.floor(Math.random() * maxNumLen + 1)) * Math.random());
+export const askQuestionBraunEven = () => {
+  const valueRandomNumber = randomNumber();
+  displayMessageScreen(`Question: ${valueRandomNumber}`);
+  return valueRandomNumber;
+};
+
+export const askQuestionBrainCalc = () => {
+  const randomNumber1 = randomNumber();
+  const randomNumber2 = randomNumber();
+  const valueSign = randomSign();
+  const valueQuestion = resultOperation(randomNumber1, randomNumber2, valueSign);
+  const textQuestion = `Question: ${randomNumber1}${valueSign}${randomNumber2}`;
+
+  displayMessageScreen(textQuestion);
+  displayMessageScreen(valueQuestion);
+  return valueQuestion;
 };
 
 export const answerUser = () => {
-  const answerUser = readlineSync.question('Your answer: ');
-  return answerUser;
+  const contentAnswer = readlineSync.question('Your answer: ');
+  return contentAnswer;
 };
 
-export const checkAnswer = (valueName,valueAnswer,valueRandom,counter) => {
-  if (valueAnswer == 'no' && valueAnswer == 'yes' )
-        {console.log(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${valueName}! `);};
-
-  if (valueRandom % 2 === 0 && valueAnswer === 'yes' || valueRandom % 2 != 0 && valueAnswer === 'no')
-          {console.log('Correct!'); evenProgram(valueName,counter)}
-            else
-              {console.log(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${valueName}!`);}
+export const checkAnswerBrainEven = (playerName, valueAnswer, valueQuestion, counter) => {
+  if (valueAnswer !== 'no' && valueAnswer !== 'yes') { displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}! `); }
+  if ((valueQuestion % 2 === 0 && valueAnswer === 'yes') || (valueQuestion % 2 !== 0 && valueAnswer === 'no')) {
+    displayMessageScreen('Correct!');
+    DriverProgramBrainEven(playerName, counter);
+  } else displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}!`);
 };
 
-export const evenProgram = (valueName,counter) => {
-    if (counter === 3)  return console.log(`Congratulations, ${valueName}!`);
+export const checkAnswerBrainCalc = (playerName, valueAnswer, valueQuestion, counter) => {
+  if (valueAnswer == valueQuestion) {
+    displayMessageScreen('Correct!');
+    DriverProgramBrainCalc(playerName, counter);
+  } else { displayMessageScreen(`Not correct, ${playerName}!`); }
+};
 
-    counter++;
+export const DriverProgramBrainEven = (playerName, counter) => {
+  if (counter === 3) return console.log(`Congratulations, ${playerName}!`);
+  let newCounter = counter;
+  newCounter += 1;
 
-    const valueRandom = askQuestion();
+  const valueQuestion = askQuestionBraunEven();
 
-    const valueAnswer = answerUser();
+  const valueAnswer = answerUser();
 
-    checkAnswer(valueName,valueAnswer,valueRandom,counter);
+  return checkAnswerBrainEven(playerName, valueAnswer, valueQuestion, newCounter);
+};
+
+export const DriverProgramBrainCalc = (playerName, counter) => {
+  if (counter === 3) return console.log(`Congratulations, ${playerName}!`);
+
+  let newCounter = counter;
+  newCounter += 1;
+
+  const valueQuestion = askQuestionBrainCalc();
+
+  const valueAnswer = answerUser();
+
+  return checkAnswerBrainCalc(playerName, valueAnswer, valueQuestion, newCounter);
 };
