@@ -57,11 +57,12 @@ export const answerUser = () => {
 };
 
 export const checkAnswerBrainEven = (playerName, valueAnswer, valueQuestion, counter) => {
-  if (valueAnswer !== 'no' && valueAnswer !== 'yes') { displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}! `); }
+  if (valueAnswer !== 'no' && valueAnswer !== 'yes') { return displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}! `); }
   if ((valueQuestion % 2 === 0 && valueAnswer === 'yes') || (valueQuestion % 2 !== 0 && valueAnswer === 'no')) {
     displayMessageScreen('Correct!');
     DriverProgramBrainEven(playerName, counter);
-  } else displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}!`);
+  } else { return displayMessageScreen(`'yes' is wrong answer ;(. Correct answer was 'no'. Let's try again, ${playerName}!`);
+};
 };
 
 export const checkAnswerBrainCalc = (playerName, valueAnswer, valueQuestion, counter) => {
