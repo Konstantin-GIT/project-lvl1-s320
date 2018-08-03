@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { enterUserName, displayMessageScreen } from '../';
+import { enterUserName, displayMessageScreen } from '..';
 
 const contentGreeting = 'Welcome to the Brain Games!';
 

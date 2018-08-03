@@ -1,6 +1,49 @@
-
-
 import readlineSync from 'readline-sync';
+import brain-even from './games/brain-even.js'
+import brain-calc from './games/brain-calc.js'
+
+// Game.run('game_1')
+
+const chooseGame = () => {
+ return switch (nameGame) {
+   case 'brainEven':
+     brain-even;
+     break;
+   case 'brainCalc':
+     brain-calc;
+     break;
+
+   default: return 'Game doesn\'t exists';
+ }
+};
+
+const game = chooseGame();
+
+if game.isFinished(gameState) {
+  Game1.print_game_result(gameState)
+  return
+}
+else {
+  gameState = Game1.step(gameState)
+
+
+
+game.start();
+
+  // initialize
+  gameState = game.start() // {counter: 0, failed: false}
+
+
+
+
+
+
+
+
+
+
+
+
 
 const enterUserName = () => {
   const valueName = readlineSync.question('May I have your name? ');
@@ -69,14 +112,15 @@ const DriverProgramBrainCalc = (playerName, counter) => {
   let newCounter = counter;
   newCounter += 1;
 
-  const question = askQuestionBrainCalc();
+  const question = toString(askQuestionBrainCalc());
 
   const answer = readlineSync.question('Your answer: ');
 
-  if (answer == question) {
+  if (answer === question) {
     console.log('Correct!');
     DriverProgramBrainCalc(playerName, newCounter);
-  } else { return console.log(`Not correct, ${playerName}!`); }
+  } else { console.log(`Not correct, ${playerName}!`); }
+  return undefined;
 };
 
 const beginGame = (nameGame) => {
