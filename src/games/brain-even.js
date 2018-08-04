@@ -1,6 +1,6 @@
 import beginGame from '..';
 
-const contentAnswer = 'Brain Even title';
+const contentAnswer = 'Answer "yes" if number even otherwise answer "no".';
 const askQuestion = () => {
   const randomNum = Math.round(Math.random() * 10);
   return {
