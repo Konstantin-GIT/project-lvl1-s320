@@ -1,15 +1,17 @@
 import beginGame from '..';
 
-const contentAnswer = 'Answer "yes" if number even otherwise answer "no".';
+const description = 'Answer "yes" if number even otherwise answer "no".';
 
 const askQuestion = () => {
   const randomNum = Math.round(Math.random() * 10);
-  return randomNum;
+  const isEven = someNumber => ((someNumber % 2 === 0));
+  const checkAnswer = number => (isEven(number) ? 'yes' : 'no');
+  const rightAnswer = checkAnswer(randomNum);
+
+  return { randomNum:randomNum,rightAnswer:rightAnswer} ;
 };
 
-const checkAnswer = answer => ((answer % 2 === 0) ? 'yes' : 'no');
 
-
-const start = () => beginGame(contentAnswer, askQuestion, checkAnswer);
+const start = () => beginGame(description, askQuestion);
 
 export default start;

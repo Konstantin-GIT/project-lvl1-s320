@@ -1,15 +1,16 @@
 import readlineSync from 'readline-sync';
 
-const DriverProgram = (userName, askQuestion, checkAnswer) => {
-  for (let i = 0; i < 3; i += 1) {
+const NUM_QUESTION = 3;
+
+const DriverProgram = (userName, askQuestion) => {
+  for (let i = 0; i < NUM_QUESTION; i += 1) {
     const result = askQuestion();
 
-    console.log(`Question: ${result}`);
+    console.log(`Question: ${result.randomNum}`);
 
     const answerUser = readlineSync.question('Your answer: ');
-    const answerRight = checkAnswer(result);
 
-    if (answerRight.toString() === answerUser.toString()) {
+    if (result.rightAnswer.toString() === answerUser.toString()) {
       console.log('Correct!');
     } else {
       return console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.
@@ -21,12 +22,12 @@ const DriverProgram = (userName, askQuestion, checkAnswer) => {
 };
 
 
-const beginGame = (contentAnswer, askQuestion, checkAnswer) => {
+const beginGame = (description, askQuestion) => {
   console.log('Welcome to the Brain Games!');
-  console.log(contentAnswer);
+  console.log(description);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-  DriverProgram(userName, askQuestion, checkAnswer);
+  DriverProgram(userName, askQuestion);
 };
 
 export default beginGame;
