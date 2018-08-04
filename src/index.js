@@ -11,9 +11,12 @@ Let's try again, ${gameState.userName}!`);
 
   console.log(`Question: ${questionValue.question}`);
   const answer = readlineSync.question('Your answer: ');
-  const newGameState = (answer === questionValue.answer)
-    ? { counter: gameState.counter + 1, failed: false, userName: gameState.userName } :
-    { counter: gameState.counter + 1, failed: true, userName: gameState.userName };
+
+  const newGameState = (toString(answer) === toString(questionValue.answer))
+    ? { counter: gameState.counter + 1, failed: false, userName: gameState.userName }
+    : { counter: gameState.counter + 1, failed: true, userName: gameState.userName };
+  if (gameState.counter <= 3) console.log('Correct!');
+
   return DriverProgram(game, newGameState);
 };
 
