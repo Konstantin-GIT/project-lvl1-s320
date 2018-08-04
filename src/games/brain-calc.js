@@ -1,5 +1,8 @@
 import beginGame from '..';
 
+const task = 'What is the result of the expression?';
+const answer = 'Wrong answer.';
+const description = { task, answer };
 const resultOperation = (randomNum1, randomNum2, Sign) => {
   switch (Sign) {
     case '+':
@@ -12,11 +15,9 @@ const resultOperation = (randomNum1, randomNum2, Sign) => {
       return randomNum1 * randomNum2;
 
     default:
-      return console.log('Я таких значений не знаю');
+      return console.log('No these signs');
   }
 };
-
-const contentAnswer = 'What is the result of the expression?';
 
 const askQuestion = () => {
   const randomNum1 = Math.round(Math.random() * 10);
@@ -24,14 +25,12 @@ const askQuestion = () => {
   const arrSign = ['+', '-', '*'];
   const rang = Math.floor(Math.random() * arrSign.length);
   const CurrentSign = arrSign[rang];
-  const newAnswer = resultOperation(randomNum1, randomNum2, CurrentSign);
-  console.log(newAnswer);
-  return {
-    question: `${randomNum1}${CurrentSign}${randomNum2}`,
-    answer: newAnswer,
-  };
+  const rightAnswer = resultOperation(randomNum1, randomNum2, CurrentSign);
+
+  return { question: `${randomNum1}${CurrentSign}${randomNum2}`, rightAnswer };
 };
 
-const Game = { contentAnswer, askQuestion };
 
-export default beginGame(Game);
+const start = () => beginGame(description, askQuestion);
+
+export default start;

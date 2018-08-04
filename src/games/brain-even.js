@@ -8,7 +8,7 @@ const askQuestion = () => {
   const checkAnswer = number => (isEven(number) ? 'yes' : 'no');
   const rightAnswer = checkAnswer(randomNum);
 
-  return { randomNum:randomNum,rightAnswer:rightAnswer} ;
+  return { randomNum, rightAnswer };
 };
 
 

@@ -1,48 +1,26 @@
-// import {  enterUserName, DriverProgramBrainGcd } from '../';
+import beginGame from '..';
 
-// const contentGreeting = 'Welcome to the Brain Games!';
-// const taskGame = 'Find the greatest common divisor of given numbers.';
+const task = 'Find the greatest common divisor of given numbers.';
+const answer = 'Wrong answer.';
+const description = { task, answer };
 
-// console.log(contentGreeting);
+const gcd = (a, b) => {
+  let i = a;
+  while (a % i !== 0 || b % i !== 0) {
+    i -= 1;
+  }
+  return i;
+};
 
-// console.log(taskGame);
+const askQuestion = () => {
+  const randomNum1 = Math.round(Math.random() * 10);
+  const randomNum2 = Math.round(Math.random() * 10);
+  const rightAnswer = gcd(randomNum1, randomNum2);
 
-// const playerName = enterUserName();
-
-// DriverProgramBrainGcd(playerName, 0);
-
-
-// const DriverProgramBrainGcd = (playerName, counter) => {
-//  if (counter === 3) return console.log(`Congratulations, ${playerName}!`);
-
-//  let newCounter = counter;
-//  newCounter += 1;
-
-//  const question = askQuestionBrainGcd();
-
-//  const answer = readlineSync.question('Your answer: ');
-
-//  if (answer == question) {
-//    console.log('Correct!');
-//    DriverProgramBrainCalc(playerName, newCounter);
-
-//  } else
-//    {return `Not correct, ${playerName}!`; }
+  return { question: `${randomNum1} ${randomNum2}`, rightAnswer };
+};
 
 
-// const askQuestionBrainGcd = () => {
-//  const randomNumber1 = randomNumber();
-//  const randomNumber2 = randomNumber();
-//  const valueQuestion = gcd(randomNumber1, randomNumber2);
-//  console.log(`Question: ${randomNumber1} ${randomNumber2}`);
-//  return valueQuestion;
-// };
+const start = () => beginGame(description, askQuestion);
 
-
-// const gcd = (a,b) => {
-//  let i = a;
-//    while (a % i !== 0 || b % i !== 0) {
-//    i = i - 1;
-//    }
-//    return i;
-// };
+export default start;
