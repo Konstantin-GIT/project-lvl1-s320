@@ -1,32 +1,32 @@
 import readlineSync from 'readline-sync';
 
-const DriverProgram = (game, gameState) => {
-  if (gameState.counter === 3) { return console.log(`Congratulations, ${gameState.userName}!`); }
-  if (gameState.failed) {
-    return console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.
-Let's try again, ${gameState.userName}!`);
+const DriverProgram = (userName, askQuestion, checkAnswer) => {
+  for (let i = 0; i < 3; i += 1) {
+    const result = askQuestion();
+
+    console.log(`Question: ${result}`);
+
+    const answerUser = readlineSync.question('Your answer: ');
+    const answerRight = checkAnswer(result);
+
+    if (answerRight.toString() === answerUser.toString()) {
+      console.log('Correct!');
+    } else {
+      return console.log(`'yes' is wrong answer ;(. Correct answer was 'no'.
+     Let's try again, ${userName}!`);
+    }
   }
 
-  const questionValue = game.askQuestion();
-
-  console.log(`Question: ${questionValue.question}`);
-  const answer = readlineSync.question('Your answer: ');
-
-  const newGameState = (toString(answer) === toString(questionValue.answer))
-    ? { counter: gameState.counter + 1, failed: false, userName: gameState.userName }
-    : { counter: gameState.counter + 1, failed: true, userName: gameState.userName };
-  if (gameState.counter <= 3) console.log('Correct!');
-
-  return DriverProgram(game, newGameState);
+  return console.log(`Congratulations, ${userName}!`);
 };
 
-const beginGame = game => () => {
+
+const beginGame = (contentAnswer, askQuestion, checkAnswer) => {
   console.log('Welcome to the Brain Games!');
-  console.log(game.contentAnswer);
+  console.log(contentAnswer);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
-  const gameState = { userName, counter: 0, failed: false };
-  DriverProgram(game, gameState);
+  DriverProgram(userName, askQuestion, checkAnswer);
 };
 
 export default beginGame;
